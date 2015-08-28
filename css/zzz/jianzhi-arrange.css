@@ -1,0 +1,36 @@
+.jianzhi-arrange-style {
+	padding-bottom: 50px;
+}
+.jianzhi-arrange-style .choose {
+	right: 0px;
+	top: 24px;
+}
+.jianzhi-arrange-style .mui-table-view .mui-table-view-cell {
+	padding-left: 40px;
+}
+.jianzhi-arrange-style .mui-table-view .mui-table-view-cell .number {
+	position: absolute;
+	left: -24px;
+	top: 5px;
+	border: 1px solid #9fd5ef;
+	color: #9fd5ef;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	font-size: 14px;
+}
+.jianzhi-arrange-nav {
+	display: block;
+	  padding: 0 10px;
+}
+.jianzhi-arrange-nav .mui-tab-item .mui-btn {
+	top: 0px;
+	width: 90px;
+}
+.send-sign {
+	font-size: 14px;
+	background-color: #9fd5ef;
+	color: #fff;
+	padding: 2px 5px;
+}

@@ -1,0 +1,31 @@
+.rcap-nav .buttonstyle .mui-btn {
+	float: left;
+	width: 44%;
+	margin: 0 3%;
+}
+.member {
+	padding: 15px 20px;
+	border-bottom: 1px solid #ddd;
+	line-height: 34px;
+	position: relative;
+}
+.member>button {
+	position: absolute;
+	right: 5px;
+	color: #00bb9d;
+	border: 2px solid #00bb9d;
+	padding: 5px 12px;
+}
+.member-time {
+	padding: 15px 5px;
+}
+.timetable .mui-checkbox input[type=checkbox] {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	top: 0;
+	right: 3px;
+}
+.timetable .mui-checkbox input[type=checkbox]:checked:before {
+	color: #9fd5ef;
+}

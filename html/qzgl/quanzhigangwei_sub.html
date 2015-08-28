@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>全职岗位</title>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/angular.1.4.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/qzgl/quanzhigangwei.js" type="text/javascript" charset="utf-8"></script>
+
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/global.css" rel="stylesheet" />
+		<link href="../../css/qzgl/quanzhigangwei.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			var ws = null;
+			mui.init();
+			mui.plusReady(function() {
+				ws = plus.webview.currentWebview();
+				ws.setPullToRefresh({
+					support: true,
+					height: "50px",
+					range: "200px",
+					contentdown: {
+						caption: "下拉可以刷新"
+					},
+					contentover: {
+						caption: "释放立即刷新"
+					},
+					contentrefresh: {
+						caption: "正在刷新..."
+					}
+				}, onRefresh);
+				plus.nativeUI.toast("下拉可以刷新");
+				/**/
+				listentHref(mui("header"));
+				listentHref(mui(".gangwei-style"), function(e) {
+					return {
+						oid: e.getAttribute("data-opt")
+					};
+				});
+			});
+
+			function onRefresh() {
+				console.log("onRefresh")
+				ws.endPullToRefresh();
+			}
+		</script>
+	</head>
+
+	<body ng-app="myApp">
+		<div class="mui-content  padding-top54" ng-controller="QZCtrl">
+			<div class="mui-loading" ng-if="isWaiting">
+				<div class="mui-spinner">
+				</div>
+			</div>
+			<ul class="gangwei-style">
+				<li class="mui-table-view-cell" ng-repeat="g in data.gangWeiList">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-10">
+							<h4 class="mui-ellipsis">{{g.jobName}}</h4>
+							<p class="mui-ellipsis orange"><span>$</span>{{g.wagejianzhi}}</p>
+							<p class="mui-ellipsis"><span>$</span>{{g.announceTime | date:"yyyy-MM-dd hh:mm:ss"}}</p>
+						</div>
+						<div class="mui-col-xs-2 mui-text-right email">
+							<div class="number">
+								<div class="redcircle" ng-show="g.messageNum!=0"></div>
+								<span>$</span>{{g.messageNum}}
+							</div>
+						</div>
+						<a class="overall open" data-href="quanzhijianli.html" data-opt="{{g.id}}"></a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>

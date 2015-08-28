@@ -1,0 +1,24 @@
+.search-person-infor .mui-slider .mui-slider-group .mui-table-view .mui-table-view-cell>h4 {
+	padding-bottom: 8px;
+	margin-bottom: 8px;
+}
+.search-person-infor .mui-slider .mui-slider-group .mui-table-view .satisfy .score-style {
+	width: 200px;
+	margin: 15px 0;
+	font-size: 16px;
+}
+.search-person-infor .mui-table-view-cell .call {
+	border: 2px solid #00bb9d;
+	color: #00bb9d;
+	font-size: 15px;
+	position: absolute;
+	top: 50px;
+	right: 30px;
+	padding: 7px;
+}
+.call>span {
+	font-size: 20px;
+}
+.search-person-infor .mui-table-view-cell.mui-active {
+	background-color: #fff;
+}

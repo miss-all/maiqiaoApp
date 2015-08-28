@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>登录界面</title>
+		<script src="js/mui.min.js"></script>
+		<script src="js/angular.1.4.4.min.js"></script>
+		<script src="js/config.js" type="text/javascript" charset="utf-8"></script>
+		<link href="css/mui.css" rel="stylesheet" />
+		<link href="css/global.css" rel="stylesheet" />
+		<link href="css/account/login.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body>
+		<header class="mui-bar login-header ">
+			<img src="img/loginpicture.jpg" class="bj ">
+			<div class="app-header">
+				<div class="app-style">
+					<img src="img/icon01.jpg" class="app-icon">
+				</div>
+				<p class="appname">迈桥</p>
+			</div>
+		</header>
+		<div class="app-content">
+			<form id="login-form" class="mui-input-group input-style login-style">
+				<div class="mui-input-row">
+					<label>账号</label>
+					<input id='account' type="text" class="mui-input-clear" placeholder="请输入账号" data-input-clear="4"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+				</div>
+				<div class="mui-input-row">
+					<label>密码</label>
+					<input id='password' type="text" class="mui-input-clear" placeholder="请输入密码" data-input-clear="4"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+				</div>
+			</form>
+			<div class="error" style="display: none;">
+				账号错误或密码不存在
+			</div>
+			<button id="login" type="button" class="mui-btn login-btn green">
+				登录
+			</button>
+			<p class="forget"> <a href="register.html" class="blue01">注册账号</a> | <span id="contact" class="blue01">忘记密码</span></p>
+		</div>
+		<script src="js/account/app.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/account/login.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var forget = document.getElementById("contact");
+			forget.addEventListener("tap", function() {
+				mui.confirm("请联系客服123456", "忘记密码");
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,19 @@
+.email {
+	position: absolute;
+}
+.email .number {
+	position: absolute;
+	color: #8f8f94;
+	font-size: 25px;
+	top: 25px;
+}
+.redcircle {
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	background-color: #F01D1D;
+	border-radius: 50%;
+}
+.gangwei-style .mui-table-view-cell{
+	  box-shadow: 2px 2px 2px #ddd;
+}

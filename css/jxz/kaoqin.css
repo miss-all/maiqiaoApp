@@ -1,0 +1,57 @@
+.date-style {
+	margin-top: 45px;
+	padding: 0px 15px;
+	border-bottom: 1px solid #9fd5ef;
+}
+.date-style .mui-input-row label {
+	width: 20%;
+	text-align: center;
+}
+.date-style .mui-input-row label>a {
+	color: #323232;
+}
+.date-style .mui-input-row label>a：active {
+	color: #323232;
+}
+.date-style .mui-input-row label~input {
+	width: 60%;
+	float: left;
+	text-align: center;
+}
+.mui-bar-nav~.checkwork {
+	padding: 0;
+	position: relative;
+}
+.checkwork .number {
+	margin: 10px 15px 0;
+}
+.checkwork .mui-table-view .mui-table-view-cell .mui-table .choose {
+	top: 20px;
+	right: 5px;
+}
+.checkwork .block {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	border-radius: 3px;
+	top: 35px;
+	left: 15px;
+	font-size: 13px;
+	text-align: center;
+	line-height: 30px;
+	color: #fff;
+}
+.checkwork .mui-table-view-cell.mui-active {
+	background-color: #fff;
+}
+.checkwork .editor {
+	position: absolute;
+	top: 0;
+	right: 15px;
+}
+.kaoqin-nav .buttonstyle .mui-btn {
+	width: 22%;
+	margin: 0 1.5%;
+	display: block;
+	float: left;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>员工评价</title>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/angular.1.4.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/global.css" rel="stylesheet" />
+		<link href="../../css/ygpj/yuangongpingjia.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			var myApp = angular.module('myApp', []);
+			myApp.fn = {};
+			myApp.controller('ygpingjiaCtrl', ['$scope', "$http",
+				function($scope, $http, $watch) {
+					$scope.isWaiting = true;
+					myApp.fn.ygpingjiaCtrl = {
+						run: function() {
+							restService.Aget($http, "/reviews/0", {}, function(response) {
+								$scope.data = response;
+								$scope.isWaiting = false;
+							});
+						}
+					}
+					$scope.run = myApp.fn.ygpingjiaCtrl.run;
+					myApp.fn.ygpingjiaCtrl.run();
+				}
+			])
+		</script>
+	</head>
+
+	<body ng-app="myApp">
+		<header class="mui-bar mui-bar-nav header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">员工评价</h1>
+		</header>
+		<div class="mui-content padding-top54 ygcomment" ng-controller="ygpingjiaCtrl">
+			<div class="mui-loading" ng-if="isWaiting">
+				<div class="mui-spinner">
+				</div>
+			</div>
+			<!--<div class="all-member"><strong>李耳、张漾、许以、莫醒醒</strong>等23人评价</div>-->
+			<ul class="ul-style">
+				<h4 ng-if="!isWaiting">全部评论({{data.pager.data.length}})</h4>
+				<li class="ygcomment-li" ng-repeat="c in data.pager.data">
+					<div class="staff"><strong>{{c.name}}</strong>&nbsp;&nbsp;做过[&nbsp;{{c.jobName}}&nbsp;]</div>
+					<div class="comment-star">
+						<div class="score-style">
+							<div class="score-rate float">
+								<div class="score-star star{{c.socre*2}}"></div>
+							</div>
+							<p class="mui-clearfix"></p>
+						</div>
+					</div>
+					<div class="mui-input-row" style="margin: 10px 5px;">
+						<div class="textarea">{{c.content}}</div>
+					</div>
+					<div class="time">{{c.date|date:"yyyy-MM-dd"}}</div>
+				</li>
+				
+				<!--<li class="ygcomment-li">
+					<div class="staff"><strong>李耳</strong>&nbsp;&nbsp;做过[&nbsp;客服&nbsp;]</div>
+					<div class="comment-star">
+						<div class="score-style">
+							<div class="score-rate float">
+								<div class="score-star star1"></div>
+							</div>
+							<p class="mui-clearfix"></p>
+						</div>
+					</div>
+					<div class="mui-input-row" style="margin: 10px 5px;">
+						<div class="textarea">帅气的西瓜头</div>
+					</div>
+					<div class="time">2015-8-18</div>
+				</li>-->
+			</ul>
+		</div>
+	</body>
+
+</html>

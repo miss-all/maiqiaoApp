@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>简历列表</title>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/angular.1.4.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/global.css" rel="stylesheet" />
+		<link href="../../css/zzz/jianzhi-arrange.css" rel="stylesheet" />
+
+	</head>
+
+	<body class="bg-white" ng-app="myApp">
+		<header class="mui-bar mui-bar-nav header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">简历列表</h1>
+			<a class="editor">全选</a>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<div class="buttonstyle" href="#">
+				<!--<button class="mui-btn green">取消</button>-->
+				<button class="mui-btn green">添加</button>
+			</div>
+		</nav>
+		<nav class="mui-bar mui-bar-tab jianzhi-arrange-nav">
+			<div class="mui-tab-item mui-active" href="#tabbar">
+				<button class="mui-btn green">群发通知</button>
+			</div>
+			<div class="mui-tab-item mui-active" href="#tabbar">
+				<button class="mui-btn green">排班</button>
+			</div>
+			<div class="mui-tab-item mui-active" href="#tabbar">
+				<button class="mui-btn green">删除</button>
+			</div>
+			<p class="clear"></p>
+		</nav>
+		<div class="mui-content padding-top54 bg-white jianzhi-arrange-style" ng-controller="jzjlCtrl">
+			<div class="mui-loading" ng-if="isWaiting">
+				<div class="mui-spinner">
+				</div>
+			</div>
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+				<li class="mui-table-view-cell" ng-repeat="p in data.partJobList | filter : {passState:false}">
+					<div class="mui-table open" data-href="../company-user.html" data-oid="{{p.userId}}">
+						<div class="mui-table-cell mui-col-xs-10">
+							<div class="number">{{$index+1}}</div>
+							<h4 class="mui-ellipsis">{{p.name}}&nbsp;&nbsp;
+								<span ng-if="p.mianshiState" class="send-sign">已发送</span></h4>
+							<p class="orange"><span>$</span>{{p.phone}}</p>
+							<p><span>$</span>{{p.school}}</p>
+						</div>
+					</div>
+					<div class="mui-input-row mui-checkbox mui-left check choose">
+						<input name="checkbox" value="Item 2" type="checkbox">
+					</div>
+				</li>
+				
+				<li class="mui-table-view-cell grey" ng-repeat="p in data.partJobList | filter : {passState:true}">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-10">
+							<h4 class="mui-ellipsis">{{p.name}}</h4>
+							<p><span>$</span>{{p.phone}}</p>
+							<p><span>$</span>{{p.school}}</p>
+						</div>
+					</div>
+					<div class="mui-input-row mui-checkbox mui-left check choose">
+						<input name="checkbox" value="Item 2" type="checkbox">
+					</div>
+				</li>
+			</ul>
+	</body>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+		listentHref(mui(".mui-content"), function(e) {
+			return {
+				oid: e.getAttribute("data-oid")
+			}
+		});
+		mui.plusReady(function() {
+			var self = plus.webview.currentWebview();
+			var oid = self.oid;
+			console.log(oid);
+			myApp.fn.jzjlCtrl.run(oid);
+		})
+		var myApp = angular.module('myApp', []);
+		myApp.fn = {};
+		myApp.controller('jzjlCtrl', ['$scope', "$http",
+			function($scope, $http, $watch) {
+				$scope.isWaiting = true;
+				myApp.fn.jzjlCtrl = {
+					run: function(oid) {
+						restService.Aget($http, "/" + oid + "/partjobs", {}, function(response) {
+							$scope.data = response;
+							$scope.isWaiting = false;
+						});
+					}
+				}
+				$scope.run = myApp.fn.jzjlCtrl.run;
+			}
+		]);
+	</script>
+
+</html>

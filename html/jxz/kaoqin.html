@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>考勤表</title>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/angular.1.4.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/global.css" rel="stylesheet" />
+		<link href="../../css/jxz/kaoqin.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body class="bg-white" ng-controller="kaoqinCtrl">
+		<header class="mui-bar mui-bar-nav header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">考勤表</h1>
+			<botton class="editor"><span class="mui-icon mui-icon-list"></span></button>
+		</header>
+		<nav class="mui-bar mui-bar-tab kaoqin-nav checkBtnBar">
+			<div class="buttonstyle" href="#">
+				<button class="mui-btn bg-red01 weidaoBtn">未到</button>
+				<button class="mui-btn bg-orange01 qingjiaBtn">请假</button>
+				<button class="mui-btn bg-purple01 chidaoBtn">迟到</button>
+				<button class="mui-btn bg-green01 yidaoBtn">已到</button>
+			</div>
+			<div class="clear"></div>
+		</nav>
+		<div class="show-choose mui-hidden">
+			<a>排班</a>
+			<a>薪资账单</a>
+		</div>
+		<div class="date-style">
+			<div class="mui-input-row">
+				<label id="predate">
+					<a class="mui-icon mui-icon-back"></a>
+				</label>
+				<input id="getdate" type="date" class="mui-input-clear" value="" data-input-clear="4">
+				<label id="nextdate">
+					<a class="mui-icon mui-icon-forward"></a>
+				</label>
+			</div>
+		</div>
+		<div class="mui-loading" ng-if="isWaiting">
+			<div class="mui-spinner">
+			</div>
+		</div>
+		<div class="mui-content bg-white checkwork">
+			<botton class="editor qxBtn blue01">全选</botton>
+			<p ng-if="!isWaiting" class="number">签到人数：<span>20</span>&nbsp;&nbsp;&nbsp;未签到人数：<span>10</span></p>
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed" ng-if="!isWaiting">
+				<li class="mui-table-view-cell" ng-repeat="j in data.mapList">
+					<div class="mui-table">
+						<div class="block bg-red01" ng-if="!j.state || j.state=='未到'">未到</div>
+						<div class="block bg-orange01" ng-if="j.state=='请假'">请假</div>
+						<div class="block bg-purple01" ng-if="j.state=='迟到'">迟到</div>
+						<div class="block bg-green01" ng-if="j.state=='已到'">已到</div>
+						<div class="mui-table-cell mui-col-xs-10">
+							<h4 class="mui-ellipsis">{{j.name}}</h4>
+							<p><span>$</span>{{j.phone}}</p>
+							<p><span>$</span>{{j.school}}</p>
+						</div>
+					</div>
+					<div class="mui-input-row mui-checkbox mui-left check choose">
+						<input name="checkbox" ngoid="{{j.id}}" type="checkbox">
+					</div>
+				</li>
+
+				<!--<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="block bg-purple01">迟到</div>
+						<div class="mui-table-cell mui-col-xs-10">
+							<h4 class="mui-ellipsis">陈好</h4>
+							<p><span>$</span>15656788989</p>
+							<p><span>$</span>宁波大学</p>
+							<div class="mui-input-row mui-checkbox mui-left check choose">
+								<input name="checkbox" value="Item 2" type="checkbox" checked="">
+							</div>
+						</div>
+					</div>
+				</li>-->
+			</ul>
+		</div>
+		<script src="../../js/qyxx/showMenu.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/jxz/kaoqin.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			mui.plusReady(function() {
+				var self = plus.webview.currentWebview();
+				oid = self.oid;
+				console.log(oid);
+				myApp.fn.kaoqinCtrl.run(oid)
+			});
+			(function($, d) {
+				var getdate = new Date();
+				var date = document.getElementById("getdate");
+				date.valueAsDate = getdate;
+				document.getElementById("predate").addEventListener("tap", function() {
+					getdate.setDate(getdate.getDate() - 1);
+					date.valueAsDate = getdate;
+				});
+				document.getElementById("nextdate").addEventListener("tap", function() {
+					getdate.setDate(getdate.getDate() + 1);
+					date.valueAsDate = getdate;
+				});
+			})(mui, document);
+		</script>
+	</body>
+
+</html>

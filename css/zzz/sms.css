@@ -1,0 +1,47 @@
+.sms {
+	position: relative;
+	padding: 45px 50px 0 50px;
+	margin-top: 10px;
+	margin-bottom: 50px;
+	border-bottom: 1px solid #9fd5ef;
+}
+.sms .pos {
+	position: absolute;
+	font-size: 14px;
+	color: #8f8f94;
+	top: 44px;
+}
+.sms .name-tab {
+	left: 3px;
+}
+.sms .iconfont {
+	color: #0095dd;
+	right: 15px;
+	font-size: 24px;
+}
+.sms .name {
+	font-size: 17px;
+	color: #323232;
+}
+.sms .name>span{
+	display: inline-block;
+}
+.send-bar {
+	padding-top: 5px;
+	padding-right: 60px;
+	height: auto;
+}
+.send-bar .send {
+	height: 40px;
+	padding: 5px 15px;
+	border: none;
+	margin: 0;
+}
+.send-bar .iconfont {
+	position: absolute;
+	width: 60px;
+	border-radius: 0;
+	color: #00bb9d;
+	border: none;
+	padding-top: 5px;
+}

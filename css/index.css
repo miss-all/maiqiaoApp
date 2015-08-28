@@ -1,0 +1,104 @@
+.bgheader {
+	box-shadow: none;
+}
+.bgslider {
+	background-color: #9fd5ef;
+	color: #fff;
+}
+#sliderProgressBar {
+	background-color: #fff;
+	height: 3px;
+	margin-top: -6px;
+}
+.mui-slider .mui-slider-group {
+	margin-top: 3px;
+}
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+	font-weight: bold;
+	color: #fff;
+}
+.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item {
+	border-top: none;
+}
+.homepage {
+	background-color: transparent;
+}
+.homepage .mui-table-view-cell {
+	box-shadow: 2px 2px 2px #ddd;
+}
+.homepage-table {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+}
+.homepage .mui-table-view-cell>a:not(.mui-btn) {
+	display: table;
+	overflow: auto;
+	margin: auto;
+	white-space: normal;
+	color: #323232;
+}
+.homepage .mui-table .table-right-start {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+.homepage .mui-table .table-right-start .email {
+	float: left;
+	padding: 15px;
+	position: relative;
+}
+.email .redcircle {
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	background-color: #F01D1D;
+	border-radius: 50%;
+	top: 20px;
+	right: 15px;
+}
+.homepage .mui-table .table-right-start .email>span {
+	font-size: 40px;
+}
+.homepage .mui-table .table-right-start .recommend {
+	float: left;
+	background-color: #9fd5ef;
+	color: #fff;
+	padding: 36px 5px;
+	margin-right: -15px;
+	margin-top: -11px;
+}
+.homepage .mui-table .table-right-going {
+	position: absolute;
+	top: 28px;
+	right: 0px;
+	color: #e35851;
+}
+.homepage .mui-table .table-right-going>span {
+	color: #fff;
+	background-color: #e35851;
+	border-radius: 50%;
+	padding: 2px;
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+}
+.homepage .mui-table .table-right-over {
+	position: absolute;
+	top: 6px;
+	right: 0;
+	padding: 10px 5px;
+	text-align: center;
+	border-radius: 50%;
+	width: 64px;
+	height: 64px;
+}
+.comment-fail {
+	border: 1px solid #ff4e00;
+	color: #ff4e00;
+}
+.comment-sucess {
+	border: 1px solid #1ba10c;
+	color: #1ba10c;
+}

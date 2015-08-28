@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>人才搜索-个人信息</title>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/angular.1.4.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/global.css" rel="stylesheet" />
+		<link href="../css/jzjl/search-gerenxinxi.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			var myApp = angular.module('myApp', []);
+			myApp.fn = {};
+			myApp.controller('userCtrl', ['$scope', "$http",
+				function($scope, $http, $watch) {
+					$scope.isWaiting = true;
+					$scope.isError = false;
+					myApp.fn.userCtrl = {
+						run: function(oid) {
+							restService.Aget($http, "/htm/company/user/" + oid, {
+								format: "json"
+							}, function(response) {
+								$scope.data = response;
+								if (response.ex) {
+									console.log(response.ex.message)
+									$scope.isWaiting = false;
+									$scope.isError = true;
+									return
+								}
+								if (!$scope.data.user.score) {
+									$scope.data.user.score = {
+										qfd: 0,
+										cxd: 0,
+										jnd: 0
+									};
+								}
+								$scope.isWaiting = false;
+							});
+						}
+					}
+					$scope.run = myApp.fn.userCtrl.run;
+				}
+			]);
+			mui.plusReady(function() {
+				var self = plus.webview.currentWebview();
+				var oid = self.oid;
+				console.log(oid);
+				myApp.fn.userCtrl.run(oid);
+			})
+		</script>
+	</head>
+
+	<body ng-app="myApp">
+		<header class="mui-bar mui-bar-nav header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">信息查看</h1>
+		</header>
+		<div class="mui-content padding-top54 slide-style search-person-infor">
+			<div id="slider" class="mui-slider">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item  mui-active" href="#item1mobile">个人信息</a>
+					<a class="mui-control-item" href="#item2mobile">空余时间</a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6"></div>
+				<div class="mui-slider-group" ng-controller="userCtrl">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div class="mui-loading" ng-if="isWaiting">
+							<div class="mui-spinner">
+							</div>
+						</div>
+						<p ng-if="isError">{{data.ex.message}}</p>
+						<ul class="mui-table-view" ng-if="!isWaiting && !isError">
+							<li class="mui-table-view-cell mui-media">
+								<h4 class="blue marginbottom-15">基本信息</h4>
+								<p class="">姓名：{{data.user.name}}</p>
+								<p class="">性别：<span ng-if="!data.user.sex">女</span><span ng-if="data.user.sex">男</span> &nbsp;&nbsp;&nbsp;&nbsp;年龄：{{data.user.age}}岁
+								</p>
+								<p class="">地址：{{data.user.school}}</p>
+								<a class="call" href="tel:{{data.user.phone}}">
+									<span class="mui-icon mui-icon-gear-filled"></span>{{data.user.phone}}</a>
+							</li>
+							<li class="mui-table-view-cell mui-media satisfy">
+								<h4>满意程度</h4>
+								<div class="score-style">
+									<span class="float">勤奋度</span>
+									<div class="score-rate float">
+										<div class="score-star star{{data.user.score.qfd * 2}}"></div>
+									</div>
+									<p class="mui-clearfix"></p>
+								</div>
+								<div class="score-style">
+									<span class="float">诚信度</span>
+									<div class="score-rate float">
+										<div class="score-star star{{data.user.score.cxd * 2}}"></div>
+									</div>
+									<p class="mui-clearfix"></p>
+								</div>
+								<div class="score-style">
+									<span class="float">技能度</span>
+									<div class="score-rate float">
+										<div class="score-star star{{data.user.score.jnd * 2}}"></div>
+									</div>
+									<p class="mui-clearfix"></p>
+								</div>
+							</li>
+							<li class="mui-table-view-cell mui-media">
+								<h4>工作经历与评价</h4>
+								<div class="work" ng-repeat="w in data.user.userReviews">
+									<div class="work-img"><img src="../img/icon01.jpg"></div>
+									<p class="mui-ellipsis workname">{{w.companyName}}
+										<br>做过[<span>{{w.partjobName}}</span>]</p>
+									<div class="comment-star">
+										<div class="score-style">
+											<span class="float">总体评价</span>
+											<div class="score-rate float">
+												<div class="score-star star{{w.companyScore}}"></div>
+											</div>
+											<p class="mui-clearfix"></p>
+										</div>
+									</div>
+									<div class="work-comment" ng-if="w.content">{{w.content}}</div>
+									<div class="work-comment" ng-if="!w.content">未留下任何言语</div>
+								</div>
+								<!--<div class="work">
+									<div class="work-img"><img src="img/icon01.jpg"></div>
+									<p class="workname">坤尚公司&nbsp;&nbsp;&nbsp;做过[<span class="blue02">客服</span>]</p>
+									<div class="comment-star">
+										<div class="score-style">
+											<span class="float">总体评价</span>
+											<div class="score-rate float">
+												<div class="score-star"></div>
+											</div>
+											<p class="mui-clearfix"></p>
+										</div>
+									</div>
+									<div class="work-comment">未留下任何言语</div>
+								</div>-->
+							</li>
+						</ul>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell mui-media">
+								<h4>空余时间</h4>
+								<table class="timetable">
+									<thead>
+										<tr>
+											<td></td>
+											<td>周
+												<br/>一</td>
+											<td>周
+												<br/>二</td>
+											<td>周
+												<br/>三</td>
+											<td>周
+												<br/>四</td>
+											<td>周
+												<br/>五</td>
+											<td>周
+												<br/>六</td>
+											<td>周
+												<br/>日</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>上
+												<br/>午</td>
+											<td>
+												<div class="small-frame"></div>
+											</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>下
+												<br/>午</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>晚
+												<br/>上</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+								<p class="tip">绿色小框为空闲时间</p>
+								<div class="mui-clearfix"></div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+		</script>
+	</body>
+
+</html>

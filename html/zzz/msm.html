@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>群发通知</title>
+		<script src="../../js/mui.min.js"></script>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/global.css" rel="stylesheet" />
+		<link href="../../css/zzz/sms.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body class="bg-white">
+		<header class="mui-bar mui-bar-nav header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">群发通知</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab send-bar">
+			<textarea id="textarea" class="send" placeholder="短信"></textarea>
+			<button class="mui-icon mui-icon-gear-filled iconfont">
+
+			</button>
+		</nav>
+		<div class="sms padding-top54">
+			<span class="pos name-tab">收件人</span>
+			<p class="name">&nbsp;<span>陈好</span>&nbsp;<span>陈好</span>&nbsp;<span>陈好</span>&nbsp;<span>陈好</span>&nbsp;<span>陈好</span>&nbsp;<span>陈好</span>&nbsp;<span>陈好</span>&nbsp;<span>陈好</span></p>
+			<a class="pos mui-icon mui-icon-gear-filled iconfont"></a>
+		</div>
+		<script type="text/javascript">
+			 /*----外置函数star----*/
+			var ie = !!window.attachEvent && !window.opera;
+			var ie9 = ie && (!!+"\v1");
+			var inputhandler = function(node, fun) {
+					if ("oninput" in node) {
+						node.oninput = fun;
+					} else {
+						node.onpropertychange = fun;
+					}
+					if (ie9) node.onkeyup = fun;
+				}
+				/*----外置函数end---*/
+			var main = document.getElementById("textarea");
+			inputhandler(main, function() {
+				if (!ie) main.style.height = 40 + "px";
+				var height = main.scrollHeight;
+				if (height >= 40) {
+					main.style.height = height + "px";
+				} else {
+					main.style.height = 40 + "px";
+				}
+			});
+		</script>
+	</body>
+
+</html>

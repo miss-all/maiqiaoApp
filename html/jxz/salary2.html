@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>薪资账单</title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/global.css" rel="stylesheet" />
+		<link href="css/salary.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body class="bg-white">
+		<header class="mui-bar mui-bar-nav header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">薪资账单</h1>
+			<a class="editor">编辑</a>
+		</header>
+		<nav class="mui-bar salary-nav salary2-nav">
+			<div class="salary-box">
+				<div class="salary-name">时薪</div>
+				<input type="number">
+				<p class="clear"></p>
+			</div>
+			<div class="salary-box">
+				<div class="salary-name">奖金</div>
+				<input type="number">
+				<p class="clear"></p>
+			</div>
+			<div class="confirm-style">
+				<button class="confirm">确定</button>
+			</div>
+			<p class="clear"></p>
+		</nav>
+		<div class="mui-content bg-white padding-top54 salary salary2">
+			<botton class="editor blue01">
+				<span>全选</span>
+			</botton>
+			<p class="jobname">宁波中信客服</p>
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+				<li class="mui-table-view-cell">
+					<div class="mui-media-body">
+						<h4 class="mui-ellipsis">陈好</h4>
+						<p class="address"><span>图</span>宁波大学</p>
+						<div class="salary-textarea">总工时&nbsp;&nbsp;&nbsp;<span>30天</span>&nbsp;&nbsp;&nbsp;总工资&nbsp;&nbsp;&nbsp;<span class="orange">300元</span></div>
+						<div class="mui-input-row mui-checkbox mui-left check choose">
+							<input name="checkbox" value="Item 2" type="checkbox" checked="">
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-media-body">
+						<h4 class="mui-ellipsis">陈好</h4>
+						<p class="address"><span>图</span>宁波大学</p>
+						<div class="salary-textarea">总工时&nbsp;&nbsp;&nbsp;<span>30天</span>&nbsp;&nbsp;&nbsp;总工资&nbsp;&nbsp;&nbsp;<span class="orange">300元</span></div>
+						<div class="mui-input-row mui-checkbox mui-left check choose">
+							<input name="checkbox" value="Item 2" type="checkbox" checked="">
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-media-body">
+						<h4 class="mui-ellipsis">陈好</h4>
+						<p class="address"><span>图</span>宁波大学</p>
+						<div class="salary-textarea">总工时&nbsp;&nbsp;&nbsp;<span>30天</span>&nbsp;&nbsp;&nbsp;总工资&nbsp;&nbsp;&nbsp;<span class="orange">300元</span></div>
+						<div class="mui-input-row mui-checkbox mui-left check choose">
+							<input name="checkbox" value="Item 2" type="checkbox" checked="">
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-media-body">
+						<h4 class="mui-ellipsis">陈好</h4>
+						<p class="address"><span>图</span>宁波大学</p>
+						<div class="salary-textarea grey">
+							总工时&nbsp;&nbsp;<span>30天</span>&nbsp;&nbsp;总工资&nbsp;&nbsp;<span>300元</span>
+							<span class="pay-over">已支付</span>
+						</div>
+						<div class="mui-input-row mui-checkbox mui-left check choose">
+							<input name="checkbox" value="Item 2" type="checkbox" disabled="">
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>

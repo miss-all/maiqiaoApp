@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<script src="js/angular.1.4.4.min.js"></script>
+		<script src="js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/account/app.js" type="text/javascript" charset="utf-8"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/global.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header bgheader">
+			<a class="mui-icon mui-icon-bars mui-pull-left"></a>
+			<h1 class="mui-title">Hello mui</h1>
+			<a class="mui-icon mui-icon-compose mui-pull-right"></a>
+			<a class="mui-icon mui-icon-pengyouquan mui-pull-right open" data-href="html/jzjl/jianzhijianli.html" style="margin-right: 1px;"></a>
+		</header>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div ng-controller="EndCtrl" id="sliderSegmentedControl" class="bgslider mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item" href="#item1mobile">正在招</a>
+					<a class="mui-control-item mui-active" href="#item2mobile">工作中</a>
+					<a class="mui-control-item" href="#item3mobile">已结束</a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
+				<div class="mui-slider-group" ng-app="myApp">
+					<div id="item1mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll" ng-controller="StartCtrl">
+								<div class="mui-loading" ng-if="isWaiting">
+									<div class="mui-spinner">
+									</div>
+								</div>
+								<ul class="mui-table-view gangwei-style a-style homepage">
+									<li class="mui-table-view-cell mui-media" ng-repeat="g in data.gangWeiList">
+										<a class="homepage-table open" data-oid="{{g.id}}" data-href="html/zzz/jianzhi-arrange.html">
+											<div class="mui-table">
+												<div class="mui-table-cell mui-col-xs-10">
+													<h4 class="mui-ellipsis">{{g.jobName}}</h4>
+													<p class="mui-ellipsis orange"><span>$</span>{{g.wagejianzhi}}</p>
+													<p class="mui-ellipsis"><span>$</span>{{g.announceTime|date:"yyyy-MM-dd"}}</p>
+													<div class="table-right-start">
+														<div class="email">
+															<span class="mui-icon mui-icon-email"></span>
+															<div class="redcircle"></div>
+														</div>
+														<div class="recommend">查看推荐</div>
+														<p class="mui-clearfix"></p>
+													</div>
+												</div>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll2" class="mui-scroll-wrapper">
+							<div class="mui-scroll" ng-controller="WorkCtrl">
+								<div class="mui-loading" ng-if="isWaiting">
+									<div class="mui-spinner">
+									</div>
+								</div>
+								<ul class="mui-table-view gangwei-style a-style homepage">
+									<li class="mui-table-view-cell mui-media" ng-repeat="g in data.gangWeiList">
+										<a class="homepage-table open" href="#" data-oid="{{g.id}}" data-href="html/jxz/kaoqin.html">
+											<div class="mui-table">
+												<div class="mui-table-cell mui-col-xs-10">
+													<h4 class="mui-ellipsis">{{g.jobName}}</h4>
+													<p class="mui-ellipsis orange"><span>$</span>{{g.wagejianzhi}}</p>
+													<p class="mui-ellipsis"><span>$</span>{{g.announceTime|date:"yyyy-MM-dd"}}</p>
+													<div class="table-right-going">未到人数：<span>30</span></div>
+												</div>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll3" class="mui-scroll-wrapper">
+							<div class="mui-scroll" ng-controller="EndCtrl">
+								<div class="mui-loading" ng-if="isWaiting">
+									<div class="mui-spinner">
+									</div>
+								</div>
+								<ul class="mui-table-view gangwei-style a-style homepage">
+									<li class="mui-table-view-cell mui-media" ng-repeat="g in data.gangWeiList">
+										<a class="homepage-table" href="#">
+											<div class="mui-table">
+												<div class="mui-table-cell mui-col-xs-10">
+													<h4 class="mui-ellipsis">{{g.jobName}}</h4>
+													<p class="mui-ellipsis orange"><span>$</span>{{g.wagejianzhi}}</p>
+													<p class="mui-ellipsis"><span>$</span>{{g.announceTime|date:"yyyy-MM-dd"}}</p>
+													<div class="table-right-over comment-fail" ng-if="g.reviewNum!=0">
+														评价
+														<br>未完成
+													</div>
+													<div class="table-right-over comment-sucess" ng-if="g.reviewNum==0">
+														评价
+														<br>未完成
+													</div>
+												</div>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/index/index.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index/module.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			(function($) {
+				listentHref(mui("header"));
+				listentHref(mui(".mui-slider-group"), function(e) {
+					return {
+						oid: e.getAttribute("data-oid")
+					};
+				});
+				$('.mui-scroll-wrapper').scroll({
+					indicators: true //是否显示滚动条
+				});
+				//显示高度调整
+				$(".mui-slider-group")[0].style.height = window.innerHeight - 40 - 45 + 3 + "px";
+				document.getElementById('slider').addEventListener('slide', function(e) {
+					if (e.detail.slideNumber === 0) {
+						myApp.fn.StartCtrl.run()
+					} else if (e.detail.slideNumber === 1) {
+						myApp.fn.WorkCtrl.run()
+					} else if (e.detail.slideNumber === 2) {
+						myApp.fn.EndCtrl.run()
+					}
+				});
+			})(mui);
+		</script>
+	</body>
+
+</html>

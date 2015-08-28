@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>全职简历</title>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/angular.1.4.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+
+		<script src="../../js/qzgl/quanzhijianli.js" type="text/javascript" charset="utf-8"></script>
+
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/global.css" rel="stylesheet" />
+		<link href="../../css/qzgl/quanzhijianli.css" rel="stylesheet" />
+	</head>
+
+	<body class="bg-white" ng-app="myApp">
+		<header class="mui-bar mui-bar-nav header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">全职简历</h1>
+			<botton class="editor">全选</button>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<div class="buttonstyle" href="#">
+				<button class="mui-btn green deleteBtn">删除</button>
+			</div>
+		</nav>
+		<div class="mui-content padding-top54 bg-white quanzhi-style" ng-controller="jianliCtrl">
+			<div class="mui-loading" ng-if="isWaiting">
+				<div class="mui-spinner">
+				</div>
+			</div>
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+				<li class="mui-table-view-cell" ng-repeat="g in data.partJobList">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-10">
+							<h4 class="mui-ellipsis">{{g.name}}</h4>
+							<p class="orange"><span>$</span>{{g.phone}}</p>
+							<p><span>$</span>{{g.school}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>$</span>{{g.time|limitTo:11|limitTo:-6}}</p>
+						</div>
+					</div>
+					<div class="mui-input-row mui-checkbox mui-left check choose">
+						<input name="checkbox" ngname="{{g.name}}" type="checkbox">
+					</div>
+				</li>
+
+				<!--<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-10">
+							<h4 class="mui-ellipsis">陈好1</h4>
+							<p class="orange"><span>$</span>15656788989</p>
+							<p><span>$</span>宁波大学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>$</span>8-19</p>
+						</div>
+					</div>
+					<div class="mui-input-row mui-checkbox mui-left check choose">
+						<input name="checkbox" type="checkbox">
+					</div>
+				</li>-->
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+		mui.plusReady(function() {
+			var self = plus.webview.currentWebview();
+			var oid = self.oid;
+			myApp.fn.jianliCtrl.run(oid)
+		});
+		mui.checkFn(".mui-table-view", ".editor", {
+			".deleteBtn": function(item) {
+				var name = "";
+				mui.each(item, function(i, e) {
+					name += e.getAttribute("ngname") + ",";
+				});
+				console.log(item.length + name)
+			}
+		});
+	</script>
+
+</html>

@@ -1,0 +1,36 @@
+.all-member {
+	margin: 15px 10px;
+}
+.staff {
+	margin: 15px 0;
+}
+.ygcomment-li {
+	position: relative;
+	margin: 10px 0;
+}
+.ygcomment .comment-star {
+	position: absolute;
+	top: 0px;
+	right: 10px;
+}
+.ygcomment-li .textarea {
+	font-size: 14px;
+	min-height: 40px;
+	line-height: 21px;
+	width: 100%;
+	margin-bottom: 15px;
+	padding: 10px 15px;
+	-webkit-user-select: text;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 3px;
+	outline: 0;
+	background-color: #fff;
+	-webkit-appearance: none;
+	padding-bottom: 30px;
+}
+.ygcomment-li .time {
+	position: absolute;
+	bottom: 25px;
+	right: 15px;
+	color: #8f8f94;
+}

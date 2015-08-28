@@ -1,0 +1,61 @@
+.login-header {
+	text-align: center;
+	color: #fff;
+	padding: 0;
+	height: 35%;
+}
+.login-header .bj {
+	width: 100%;
+	height: 100%;
+}
+.app-header {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	margin-top: 11%;
+}
+.app-header .app-icon {
+	width: 23%;
+	border-radius: 50%;
+}
+.appname {
+	color: #fff;
+	font-size: 21px;
+	margin: 15px 0;
+}
+.app-content {
+	width: 100%;
+	position: absolute;
+	top: 35%;
+	padding-top: 15px;
+	height: 65%;
+	background-color: #fff;
+}
+.app-content .login-style {
+	width: 90%;
+	margin: 0 auto;
+	border: 1px solid #c8c7cc;
+	border-radius: 7px;
+	margin-top: 25px;
+}
+.app-content .mui-input-group:before,
+.mui-input-group:after {
+	background-color: #fff;
+}
+.app-content .error {
+	width: 85%;
+	margin: 0px auto;
+	margin-top: 10px;
+	color: #F01D1D;
+}
+.forget {
+	margin: 10px 0;
+	text-align: center;
+}
+.register {
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	margin-left: -28px;
+	font-size: 17px;
+}

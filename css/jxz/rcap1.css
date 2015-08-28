@@ -1,0 +1,40 @@
+.rcap {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.rcap .mui-search {
+	margin-top: 15px;
+}
+.rcap .mui-search input[type=search] {
+	background-color: #efeff4;
+}
+.rcap-content ul {
+	padding: 0;
+}
+.rcap-content ul li {
+	list-style: none;
+	position: relative;
+	margin-bottom: 25px;
+}
+.rcap-content .rcap-name {
+	position: relative;
+	text-align: center;
+	border: 1px solid #43bafe;
+	padding: 13px;
+}
+.rcap-content .rcap-name>a {
+	position: absolute;
+	right: 15px;
+}
+.rcap-content .rcap-time {
+	border: 1px solid #43bafe;
+	border-top: none;
+	padding: 13px 15px;
+}
+.rcap-content .rcap-time p {
+	margin-bottom: 0;
+}
+.rcap-content .rcap-time p>span {
+	display: inline-block;
+	color: #323232;
+}
